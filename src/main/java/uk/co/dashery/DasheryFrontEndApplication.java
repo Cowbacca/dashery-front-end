@@ -11,9 +11,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class DasheryFrontEndApplication {
 
     @RequestMapping("/")
-    @ResponseBody
     String home() {
-        return "Hello World!";
+        return "index";
+    }
+
+    @RequestMapping("/results")
+    String results() {
+        return "results";
     }
 
 
