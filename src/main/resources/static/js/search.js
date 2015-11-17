@@ -74,5 +74,5 @@ $(document).ready(function () {
 });
 
 function search() {
-    window.location.pathname = 'results';
+    window.location.href = 'results?search=colour:grey';
 }
