@@ -74,8 +74,14 @@ $(document).ready(function () {
 });
 
 function search() {
-    var searchQuery = $.map($('.tokenfield-search').tokenfield('getTokens'), function(token){
-            return token.category + ":" + token.value;
-        }).join(',');
-    window.location.href = 'results?search=' + searchQuery;
+    var tokens = $('.tokenfield-search').tokenfield('getTokens');
+    if(tokens.length > 0){
+        var searchQuery = '?search='
+            + $.map(tokens, function(token){
+                return token.category + ":" + token.value;
+            }).join(',');
+        window.location.href = 'results' + searchQuery;
+    } else {
+        alert('Please enter some tokens!');
+    }
 }
