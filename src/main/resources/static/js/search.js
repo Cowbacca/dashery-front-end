@@ -1,30 +1,43 @@
 function initSearchTokenfield() {
+    var terms = [
+                            {
+                                category: 'Colour',
+                                value: 'grey',
+                            },
+                            {
+                                category: 'Type',
+                                value: 'trousers',
+                            },
+                            {
+                                category: 'Material',
+                                value: 'wool',
+                            },
+                            {
+                                category: 'Origin',
+                                value: 'Made in England',
+                            },
+                        ];
+
     var engine = new Bloodhound({
-        local: [
-            {
-                category: 'Colour',
-                value: 'grey',
-            },
-            {
-                category: 'Type',
-                value: 'trousers',
-            },
-            {
-                category: 'Material',
-                value: 'wool',
-            },
-            {
-                category: 'Origin',
-                value: 'Made in England',
-            },
-        ],
+        local: terms,
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
     });
 
     engine.initialize();
 
-    $('.tokenfield-search').tokenfield({
+    $('.tokenfield-search')
+
+    .on('tokenfield:createtoken', function (e) {
+        $.each(terms, function() {
+            if(this.value === e.attrs.value) {
+                e.attrs.category = this.category;
+                return;
+            }
+        });
+      })
+
+    .tokenfield({
         typeahead: [null,
             {
                 source: engine.ttAdapter(),
@@ -35,7 +48,9 @@ function initSearchTokenfield() {
                 },
             }
         ]
-    }).parent().on('keydown', this, function (event) {
+    })
+
+    .parent().on('keydown', this, function (event) {
         if (event.ctrlKey && event.keyCode == 13) {
             search();
         }
