@@ -74,5 +74,8 @@ $(document).ready(function () {
 });
 
 function search() {
-    window.location.href = 'results?search=colour:grey';
+    var searchQuery = $.map($('.tokenfield-search').tokenfield('getTokens'), function(token){
+            return token.category + ":" + token.value;
+        }).join(',');
+    window.location.href = 'results?search=' + searchQuery;
 }
