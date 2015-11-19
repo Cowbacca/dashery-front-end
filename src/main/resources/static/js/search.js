@@ -19,7 +19,7 @@ function initSearchTokenfield() {
                         ];
 
     var engine = new Bloodhound({
-        prefetch: 'http://dashery-autocomplete.herokuapp.com/tokens',
+        prefetch: prefetchURL,
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
     });
