@@ -19,7 +19,7 @@ function initSearchTokenfield() {
                         ];
 
     var engine = new Bloodhound({
-        local: terms,
+        prefetch: 'http://dashery-autocomplete.herokuapp.com/tokens',
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
     });
@@ -29,12 +29,13 @@ function initSearchTokenfield() {
     $('.tokenfield-search')
 
     .on('tokenfield:createtoken', function (e) {
-        $.each(terms, function() {
-            if(this.value === e.attrs.value) {
-                e.attrs.category = this.category;
-                return;
+        engine.search(e.attrs.value, addCategory, addCategory);
+
+        function addCategory(datums) {
+            if(!e.attrs.category && datums.length > 0){
+                e.attrs.category = datums[0].category;
             }
-        });
+        }
       })
 
     .tokenfield({
@@ -56,6 +57,7 @@ function initSearchTokenfield() {
         }
     });
 }
+
 function sortNumericalResults(attribute) {
     sortResults(attribute, function (a, b) {
         return $(a).data(attribute) - $(b).data(attribute);
