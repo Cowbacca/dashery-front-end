@@ -1,4 +1,7 @@
 # Dashery Front End
+
+[![Build Status](https://travis-ci.org/Cowbacca/dashery-front-end.svg?branch=master)](https://travis-ci.org/Cowbacca/dashery-front-end)
+
 Web front end for Dashery clothing search.
 
 [Staging](https://dashery-front-end-staging.herokuapp.com/)
