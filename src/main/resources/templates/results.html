@@ -29,8 +29,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <div class="navbar-form navbar-left tokenfield">
                     <div class="input-group">
-                        <input type="text" class="form-input tokenfield-search"
-                               value="grey,wool,trousers,Made in England"/>
+                        <input type="text" class="form-input tokenfield-search"/>
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="button" onclick="search()">Go!</button>
                 </span>
@@ -74,6 +73,7 @@
 </div>
 <script th:inline="javascript">
     prefetchURL = /*[[${@environment.getProperty('dashery.autocomplete.prefetch.url')}]]*/;
+
 </script>
 <script type="text/javascript" src='bower_components/jquery/dist/jquery.min.js'></script>
 <script type="text/javascript" src='bower_components/bootstrap/dist/js/bootstrap.min.js'></script>
