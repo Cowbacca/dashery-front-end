@@ -1,2 +1,8 @@
 language: java
 jdk: oraclejdk8
+spring:
+  cloud:
+    config:
+      retry:
+        maxInterval: 10000
+        multiplier: 1.6
