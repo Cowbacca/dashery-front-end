@@ -1,23 +1,4 @@
 function initSearchTokenfield() {
-    var terms = [
-                            {
-                                category: 'Colour',
-                                value: 'grey',
-                            },
-                            {
-                                category: 'Type',
-                                value: 'trousers',
-                            },
-                            {
-                                category: 'Material',
-                                value: 'wool',
-                            },
-                            {
-                                category: 'Origin',
-                                value: 'Made in England',
-                            },
-                        ];
-
     var engine = new Bloodhound({
         prefetch: prefetchURL,
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
@@ -95,7 +76,7 @@ function search() {
     if(tokens.length > 0){
         var searchQuery = '?search='
             + $.map(tokens, function(token){
-                return token.category + ":" + token.value;
+                return token.value;
             }).join(',');
         window.location.href = 'results' + searchQuery;
     } else {
