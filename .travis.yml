@@ -6,3 +6,7 @@ spring:
       retry:
         maxInterval: 10000
         multiplier: 1.6
+before_install:
+  - pip install --user codecov
+after_success:
+  - codecov
