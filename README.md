@@ -1,6 +1,4 @@
-# Dashery Front End
-
-[![Build Status](https://travis-ci.org/Cowbacca/dashery-front-end.svg?branch=master)](https://travis-ci.org/Cowbacca/dashery-front-end)
+# Dashery Front End [![Build Status](https://travis-ci.org/Cowbacca/dashery-front-end.svg?branch=master)](https://travis-ci.org/Cowbacca/dashery-front-end) [![codecov.io](https://codecov.io/github/Cowbacca/dashery-front-end/coverage.svg?branch=master)](https://codecov.io/github/Cowbacca/dashery-front-end?branch=master)
 
 Web front end for Dashery clothing search.
 
