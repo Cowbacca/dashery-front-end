@@ -8,26 +8,12 @@ function initSearchTokenfield() {
     engine.initialize();
 
     $('.tokenfield-search')
-
-    .on('tokenfield:createtoken', function (e) {
-        engine.search(e.attrs.value, addCategory, addCategory);
-
-        function addCategory(datums) {
-            if(!e.attrs.category && datums.length > 0){
-                e.attrs.category = datums[0].category;
-            }
-        }
-      })
-
     .tokenfield({
         typeahead: [null,
             {
                 source: engine.ttAdapter(),
                 name: 'clothes',
                 display: 'value',
-                templates: {
-                    suggestion: Handlebars.compile('<div>{{category}}: {{value}}</div>')
-                },
             }
         ]
     })
